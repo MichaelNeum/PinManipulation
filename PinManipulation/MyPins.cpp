@@ -1,4 +1,7 @@
 #include "MyPins.h"
+#include "MyNames.h"
+
+using namespace Names::TimerSettings;
 
 void PinManipulation::MyPinMode(int Pin , char Mode)
 {
@@ -49,4 +52,17 @@ bool PinManipulation::MyDigitalRead(int Pin)
     return PIND & (1 << Pin);           //Returns state of pin
     
   }
+}
+
+void Timer::Activate16BitTimer()
+{
+  TCCR1A &= ActivateTimerA;
+  TCCR1B &= ActivateTimerB;
+  TCCR1B |= Prescaler1;
+  TIMSK1 |= ActivateInterrupt;
+}
+
+bool Timer::PWMSignal()
+{
+  
 }
