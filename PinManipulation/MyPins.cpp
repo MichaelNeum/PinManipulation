@@ -64,5 +64,10 @@ void Timer::Activate16BitTimer()
 
 bool Timer::PWMSignal()
 {
-  
+  return this->_TimerOverflowState; 
+}
+
+void Timer::HandleInterrupt()
+{
+  this->_TimerOverflowState = !this->_TimerOverflowState;
 }
